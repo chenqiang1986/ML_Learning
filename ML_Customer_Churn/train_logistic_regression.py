@@ -82,6 +82,8 @@ def build_model(
     # p(w, X) = exp(f(w,X)) / (exp(f(w,X)) + 1) 
     #
     # loss(w) = - y ln p(w,X) - (1-y) ln (1-p(w,X)) 
+    #
+    # Training process essential: Find a w to minimize loss function
     classifier = LogisticRegression(max_iter=10, solver="lbfgs", verbose=1)
     scoring_monitor = None
     monitoring_mode = "verbose-only"
