@@ -78,6 +78,10 @@ def build_model(
         ]
     )
 
+    # f(w, X) = \sum_{i} w[i] * X[i], where w is TBD coefficients.
+    # p(w, X) = exp(f(w,X)) / (exp(f(w,X)) + 1) 
+    #
+    # loss(w) = - y ln p(w,X) - (1-y) ln (1-p(w,X)) 
     classifier = LogisticRegression(max_iter=10, solver="lbfgs", verbose=1)
     scoring_monitor = None
     monitoring_mode = "verbose-only"
