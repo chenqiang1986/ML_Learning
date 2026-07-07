@@ -8,6 +8,10 @@ This project trains a logistic regression model on the Telco Customer Churn data
 - `training_config.py`: command-line options
 - `preprocess_preview.py`: preprocessing summary and preview output
 - `teaching_scalers.py`: custom teaching scaler used to demonstrate bad feature scaling
+- `train_logistic_regression.ipynb`: notebook version of the main training flow
+- `training_config.ipynb`: notebook version of the config module
+- `preprocess_preview.ipynb`: notebook version of the preprocessing helpers
+- `teaching_scalers.ipynb`: notebook version of the custom scaler
 - `WA_Fn-UseC_-Telco-Customer-Churn.csv`: input dataset
 
 ## Requirements
@@ -73,6 +77,22 @@ python3 train_logistic_regression.py \
   --model-out churn_model.pkl \
   --preprocessed-out transformed_train.csv
 ```
+
+## Notebook Workflow
+
+Open `train_logistic_regression.ipynb` in Jupyter or VS Code if you want to step through the same training flow interactively.
+
+The main notebook includes:
+
+- a config cell you can edit instead of passing CLI flags
+- the training functions from the script
+- a final execution cell that trains the model and writes the same output files
+
+The helper notebooks mirror the supporting Python modules for reference and experimentation:
+
+- `training_config.ipynb`
+- `preprocess_preview.ipynb`
+- `teaching_scalers.ipynb`
 
 ## Command-Line Options
 
