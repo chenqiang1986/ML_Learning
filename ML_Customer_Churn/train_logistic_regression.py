@@ -85,6 +85,14 @@ def build_model(
     #
     # Training process essential: Find a w to minimize loss function
     classifier = LogisticRegression(max_iter=10, solver="lbfgs", verbose=1)
+
+    model = Pipeline(
+        steps=[
+            ("preprocessor", preprocessor),
+            ("classifier", classifier),
+        ]
+    )
+
     scoring_monitor = None
     monitoring_mode = "verbose-only"
 
@@ -98,16 +106,13 @@ def build_model(
         except Exception:
             monitoring_mode = "scoring-only"
 
-        classifier.set_callbacks(*callbacks)
+        try:
+            model.set_callbacks(*callbacks)
+        except (AttributeError, TypeError):
+            classifier.set_callbacks(*callbacks)
     except Exception:
         scoring_monitor = None
-
-    model = Pipeline(
-        steps=[
-            ("preprocessor", preprocessor),
-            ("classifier", classifier),
-        ]
-    )
+        monitoring_mode = "verbose-only"
 
     model._scoring_monitor = scoring_monitor
     model._fit_monitoring_mode = monitoring_mode
